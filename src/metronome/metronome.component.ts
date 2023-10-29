@@ -12,6 +12,7 @@ export class MetronomeComponent implements OnInit {
   phase: number = 0;
   amp: number = 1;
   input: string = '133';
+  btnLabel: string = 'Start';
   constructor() {
     this.ac = new AudioContext();
     this.source = this.ac.createBufferSource();
@@ -50,8 +51,10 @@ export class MetronomeComponent implements OnInit {
   buttonHandler() {
     if (this.ac.state == 'running') {
       this.ac.suspend();
+      this.btnLabel = 'Start';
     } else {
       this.ac.resume();
+      this.btnLabel = 'Stop';
     }
   }
 
